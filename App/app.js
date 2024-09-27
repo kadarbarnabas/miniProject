@@ -1,17 +1,24 @@
 const express = require('express');
 const path = require('path');
+const userRoutes = require('./userRoutes'); // Győződj meg róla, hogy ez a helyes útvonal
+
 const app = express();
+const PORT = 3000;
 
-// Statikus fájlok kiszolgálása a UI mappából
-app.use(express.static(path.join(__dirname, '..', 'UI')));
+// Middleware beállítása JSON testek kezelésére
+app.use(express.json());
 
-// Gyökér útvonal (/) kiszolgálása
+
+app.use(express.static(path.join(__dirname, '../UI'))); // Állítsd be a helyes mappát
+
+// Root route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'UI', 'index.html'));
+    res.sendFile(path.join(__dirname, '../UI/index.html')); // Kiszolgáljuk az index.html fájlt
 });
 
-// Szerver indítása
-const PORT = process.env.PORT || 3000;
+// Users route
+app.use('/api/users', userRoutes); // Route configuration
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} (http://localhost:3000)`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

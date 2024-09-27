@@ -1,12 +1,91 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felhasználó API</title>
+    <script type="module" src="Controllers/UserControllers.js"></script>
 </head>
 <body>
-  <h1>Hello World!!!!!!</h1>
+    <h1>Felhasználó API</h1>
+    <form id="userForm">
+        <input type="text" id="username" placeholder="Felhasználónév" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <button type="submit">Felhasználó hozzáadása</button>
+    </form>
+    <ul id="userList"></ul>
+
+    <script>
+        document.getElementById('userForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            const user = { username, email };
+            await addUser(user); // Új felhasználó hozzáadása
+            document.getElementById('userForm').reset();
+            fetchUsers(); // Felhasználók frissítése
+        });
+
+        async function fetchUsers() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = `${user.username} (${user.email})`;
+                
+                // Frissítési gomb
+                const updateButton = document.createElement('button');
+                updateButton.textContent = 'Frissít';
+                updateButton.onclick = () => updateUser(user.username);
+                
+                // Törlési gomb
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Törlés';
+                deleteButton.onclick = () => deleteUser(user.username);
+                
+                li.appendChild(updateButton);
+                li.appendChild(deleteButton);
+                userList.appendChild(li);
+            });
+        }
+
+        async function addUser(user) {
+            await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+        }
+
+        async function updateUser(username) {
+            const email = prompt('Új email cím:', '');
+            if (email) {
+                const updatedUser = { email };
+                await fetch(`/api/users/${username}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedUser),
+                });
+                fetchUsers(); // Frissítsük a felhasználók listáját
+            }
+        }
+
+        async function deleteUser(username) {
+            await fetch(`/api/users/${username}`, {
+                method: 'DELETE',
+            });
+            fetchUsers(); // Frissítsük a felhasználók listáját
+        }
+
+        fetchUsers(); // Az oldal betöltésekor felhasználók lekérése
+    </script>
 </body>
 </html>
