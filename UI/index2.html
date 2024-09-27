@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Pairs CRUD</title>
+    <script type="module" src="Controllers/WordControllers.js"></script>
+</head>
+<body>
+    <h1>Word Pairs CRUD Műveletek</h1>
+
+    <!-- Szó párok listázása -->
+    <h2>Szó párok listázása</h2>
+    <button id="fetchWordsBtn">Szó párok lekérése</button>
+    <ul id="wordList"></ul>
+
+    <!-- Új szó pár hozzáadása -->
+    <h2>Új szó pár hozzáadása</h2>
+    <label for="english">Angol szó:</label>
+    <input type="text" id="english" />
+    <label for="hungarian">Magyar szó:</label>
+    <input type="text" id="hungarian" />
+    <button id="addWordBtn">Szó pár hozzáadása</button>
+
+    <!-- Szó pár frissítése -->
+    <h2>Szó pár frissítése</h2>
+    <label for="updateEnglish">Frissítendő angol szó:</label>
+    <input type="text" id="updateEnglish" />
+    <label for="newHungarian">Új magyar szó:</label>
+    <input type="text" id="newHungarian" />
+    <button id="updateWordBtn">Szó pár frissítése</button>
+
+    <!-- Szó pár törlése -->
+    <h2>Szó pár törlése</h2>
+    <label for="deleteEnglish">Törlendő angol szó:</label>
+    <input type="text" id="deleteEnglish" />
+    <button id="deleteWordBtn">Szó pár törlése</button>
+
+    <script type="module">
+        import { fetchWordPairs, addWordPair, updateWordPair, deleteWordPair } from './Controllers/WordControllers.js';
+
+        // Szó párok lekérése
+        document.getElementById('fetchWordsBtn').addEventListener('click', async () => {
+            const wordPairs = await fetchWordPairs();
+            const wordList = document.getElementById('wordList');
+            wordList.innerHTML = '';
+            wordPairs.forEach(pair => {
+                const li = document.createElement('li');
+                li.textContent = `${pair.english} - ${pair.hungarian}`;
+                wordList.appendChild(li);
+            });
+        });
+
+        // Új szó pár hozzáadása
+        document.getElementById('addWordBtn').addEventListener('click', async () => {
+            const english = document.getElementById('english').value;
+            const hungarian = document.getElementById('hungarian').value;
+            await addWordPair({ english, hungarian });
+            alert('Szó pár hozzáadva!');
+        });
+
+        // Szó pár frissítése
+        document.getElementById('updateWordBtn').addEventListener('click', async () => {
+            const english = document.getElementById('updateEnglish').value;
+            const hungarian = document.getElementById('newHungarian').value;
+            await updateWordPair(english, { hungarian });
+            alert('Szó pár frissítve!');
+        });
+
+        // Szó pár törlése
+        document.getElementById('deleteWordBtn').addEventListener('click', async () => {
+            const english = document.getElementById('deleteEnglish').value;
+            await deleteWordPair(english);
+            alert('Szó pár törölve!');
+        });
+    </script>
+</body>
+</html>

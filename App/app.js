@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const userRoutes = require('./userRoutes'); // Győződj meg róla, hogy ez a helyes útvonal
+const userRoutes = require('./userRoutes');
+const wordRoutes = require('./wordRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -13,11 +14,14 @@ app.use(express.static(path.join(__dirname, '../UI'))); // Állítsd be a helyes
 
 // Root route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../UI/index.html')); // Kiszolgáljuk az index.html fájlt
+    res.sendFile(path.join(__dirname, '../UI/index2.html')); // Kiszolgáljuk az index.html fájlt
 });
 
-// Users route
-app.use('/api/users', userRoutes); // Route configuration
+// Felhasználók CRUD útvonalak
+app.use('/api/users', userRoutes);
+
+// Szó párok CRUD útvonalak
+app.use('/api/words', wordRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
