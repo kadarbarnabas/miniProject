@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     res.status(200).json(wordPairs);
 });
 
-// Szó pár frissítése (Update) - Hiba-kezelés nélkül
+// Szó pár frissítése (Update)
 router.put('/:english', (req, res) => {
     const english = req.params.english;
     const updatedWordPair = req.body;
@@ -37,7 +37,7 @@ router.put('/:english', (req, res) => {
     res.status(200).json(wordPairs[wordIndex]);
 });
 
-// Szó pár törlése (Delete) - Hiba-kezelés nélkül
+// Szó pár törlése (Delete)
 router.delete('/:english', (req, res) => {
     const english = req.params.english;
 

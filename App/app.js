@@ -10,11 +10,10 @@ const PORT = 3000;
 app.use(express.json());
 
 
-app.use(express.static(path.join(__dirname, '../UI'))); // Állítsd be a helyes mappát
+app.use(express.static(path.join(__dirname, '../UI'))); 
 
-// Root route
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../UI/index2.html')); // Kiszolgáljuk az index.html fájlt
+    res.sendFile(path.join(__dirname, '../UI/index2.html')); 
 });
 
 // Felhasználók CRUD útvonalak

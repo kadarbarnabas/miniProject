@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
         users.push(newUser);
 
         fs.writeFile(path.join(__dirname, '../Models/users.json'), JSON.stringify(users, null, 2), (err) => {
-            res.status(201).json(newUser); // Visszaadjuk a hozzáadott felhasználót
+            res.status(201).json(newUser); 
         });
     });
 });
