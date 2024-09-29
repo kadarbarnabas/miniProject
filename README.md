@@ -16,10 +16,6 @@ Ez egy egyszerű webalkalmazás, amelyet **Node.js** segítségével készített
 
 1. Telepítsd a **Node.js**-t a [Node.js hivatalos weboldaláról](https://nodejs.org/).
 2. Klónozd a repót és lépj be a projekt mappájába.
-
-```bash
-npm install express
+3. Telepíts a express csomagot az **npm install express** parancsal.
 
 ![UseCase](/UML_diagram/UseCase.png)
-
-!
