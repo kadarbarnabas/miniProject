@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../UI'))); 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../UI/index2.html')); 
+    res.sendFile(path.join(__dirname, '../UI/Pages/GamePage/game.html')); 
 });
 
 // Felhasználók CRUD útvonalak
