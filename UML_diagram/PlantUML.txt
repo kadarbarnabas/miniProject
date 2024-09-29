@@ -1,0 +1,7 @@
+@startuml
+:Játékos: as J
+(Regisztráció) as F1
+(Játék) as F2
+J --> F1
+J --> F2
+@enduml
