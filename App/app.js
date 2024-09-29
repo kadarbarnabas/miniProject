@@ -12,9 +12,17 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../UI/Pages/LoginPage')));
 
+app.use(express.static(path.join(__dirname, '../UI/Pages/GamePage')));
+
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../UI/Pages/LoginPage/login_page.html')); 
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../UI/Pages/GamePage/game.html')); 
+});
+
 
 // Felhasználók CRUD útvonalak
 app.use('/api/users', userRoutes);
