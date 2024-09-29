@@ -10,10 +10,10 @@ const PORT = 3000;
 app.use(express.json());
 
 
-app.use(express.static(path.join(__dirname, '../UI'))); 
+app.use(express.static(path.join(__dirname, '../UI/Pages/LoginPage')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../UI/Pages/GamePage/game.html')); 
+    res.sendFile(path.join(__dirname, '../UI/Pages/LoginPage/login_page.html')); 
 });
 
 // Felhasználók CRUD útvonalak
