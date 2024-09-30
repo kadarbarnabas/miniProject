@@ -19,3 +19,5 @@ Ez egy egyszerű webalkalmazás, amelyet **Node.js** segítségével készített
 3. Telepíts a express csomagot az **npm install express** parancsal.
 
 ![UseCase](/UML_diagram/UseCase.png)
+
+![Képernyő terv](/figma_png/game.png)
