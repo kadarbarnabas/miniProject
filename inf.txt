@@ -1,0 +1,25 @@
+szabad riport:
+Random angol szavak és a hozzájuk tartozó magyar szó párok megjelenítése összekeverve. 
+Időzítő leteltével vége. Össze kötött szavak eltűnnek és új szópárok jelennek meg.
+Ponttábla ahol mennyit tudott össze kötni valaki egy bizonyos idő alatt.
+
+irányított riport:
+Lehessen végetlen idejig kötögetni?(gyakorolni) -> Lehessen
+
+
+Köv spec:
+- k1 -> adatbzáis - angol-magyar/magyar-angol szótár -> 1.0 Egy olyan adatbázis amibe a angol-magyar szópárok vannak
+- k2 -> Bejelntkező/Regisztrációs oldal -> 1.0 -> A pont táblában való részvétel miatt és a ponttábla megnézése miatt
+- k3 -> Fő oldal -> 1.0 -> Maga az a felület ahol a kártyákat össze lehet kötni az időzítőt elindítani
+
+Képernyő terv: figma.com
+Sanyi
+
+
+Use Case:  plantUML.com
+Bence
+//www.plantuml.com/plantuml/png/RP4nRi9044LxdsBaAXGe2WU880LIYZJX10CxcCNZCTgT86MZ788cHJgN5AcGkC28UyK89p8IxRw_xnKpZef1tohEc9OAMaFmnKh1-K0BzRLaiVIomO0LR71HOa4pVMU2CqOfc39SQ1qWdnAlC2QnXksG0qR0XpysSPKN7vC6Qzg72nrb_mx8dsXDJA8bfTCEQdR8ENnaq4fWE7o4kzv0_Fqh5PsEnGzwinSgnFRj110sjQXQC-SsEiW--xdfxSYpEFjHl5RQLuo9IZkg7GlI5bwx9WvrRatoiPEDkd_VQuW9jrZ2adZhbPW6FJwxiCeEhevjrfg8DpWnavns8Ta-qZaz9d7dW_q2
+
+
+
+

@@ -21,3 +21,5 @@ Ez egy egyszerű webalkalmazás, amelyet **Node.js** segítségével készített
 ![UseCase](/UML_diagram/UseCase.png)
 
 ![Képernyő terv](/figma_png/game.png)
+
+
